@@ -617,11 +617,12 @@ body{
 }
 
 /* =========================
-   الموبايل
+   MOBILE RESPONSIVE
    ========================= */
 
-@media(max-width:700px){
+@media (max-width:700px){
 
+  /* الصفحة نفسها ممنوع تتمدد بالعرض */
   html,
   body{
     width:100%;
@@ -632,62 +633,31 @@ body{
   .app{
     display:block;
     width:100%;
-    max-width:100%;
+    min-width:0;
   }
 
-  /* القائمة العلوية */
+  /* Sidebar */
   .sidebar{
     position:static;
     width:100%;
-    max-width:100%;
     height:auto;
-    padding:14px 12px;
+    min-width:0;
   }
 
-  .brand{
-    padding:8px 10px 12px;
-    margin-bottom:10px;
-  }
-
-  .brand strong{
-    font-size:21px;
-  }
-
-  .brand small{
-    font-size:11px;
-  }
-
-  .nav{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:4px;
-    width:100%;
-  }
-
-  .nav button{
-    width:100%;
-    margin:0;
-    padding:10px 7px;
-    font-size:11px;
-    white-space:nowrap;
-  }
-
-  .logout{
-    margin-top:12px;
-  }
-
-  /* المحتوى */
   .content{
     margin:0;
     width:100%;
     max-width:100%;
-    padding:16px 12px;
+    min-width:0;
+    padding:16px;
+    overflow:hidden;
   }
 
+  /* Topbar */
   .topbar{
+    width:100%;
+    max-width:100%;
     align-items:flex-start;
-    gap:10px;
-    margin-bottom:18px;
   }
 
   .title{
@@ -695,7 +665,7 @@ body{
   }
 
   .title h1{
-    font-size:22px;
+    font-size:25px;
   }
 
   .title p{
@@ -706,126 +676,131 @@ body{
     display:none;
   }
 
-  /* البطاقات */
+  /* Cards */
   .cards{
     grid-template-columns:1fr;
+    width:100%;
+  }
+
+  /* Two columns */
+  .two{
+    grid-template-columns:1fr;
+    width:100%;
+  }
+
+  /* Forms */
+  .formgrid{
+    grid-template-columns:1fr;
+  }
+
+  /* Navigation */
+  .nav{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:3px;
+  }
+
+  .nav button{
+    font-size:12px;
+  }
+
+  .brand{
+    padding-bottom:12px;
+  }
+
+  /* ==================================================
+     TABLE
+     الجدول يفضل كامل ونسحبه يمين وشمال
+     ================================================== */
+
+  .table-wrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    /* مهم: السحب يكون داخل الجدول فقط */
+    -webkit-overflow-scrolling:touch;
+
+    /* منع الصفحة نفسها من التمدد */
+    overscroll-behavior-x:contain;
+  }
+
+  .table{
+    width:100%;
+    min-width:720px;
+    table-layout:auto;
+  }
+
+  .table th,
+  .table td{
+    white-space:nowrap;
+  }
+
+  /* ==================================================
+     Panels
+     ================================================== */
+
+  .panel{
+    width:100%;
+    max-width:100%;
+    min-width:0;
   }
 
   .card{
-    padding:15px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
   }
 
-  .two{
-    grid-template-columns:1fr;
-  }
+  /* ==================================================
+     Section Header
+     ================================================== */
 
-  .panel{
-    padding:15px;
-    border-radius:16px;
-  }
-
-  /* العناوين */
   .section-head{
-    flex-wrap:wrap;
     gap:10px;
+    flex-wrap:wrap;
   }
 
-  .section-head h3{
-    margin:0;
-  }
-
-  /* البحث */
   .search{
     width:100%;
     min-width:0;
   }
 
-  /* النماذج */
-  .formgrid{
-    grid-template-columns:1fr;
-  }
+  /* ==================================================
+     Toolbar
+     ================================================== */
 
-  /* شريط الأدوات */
   .toolbar{
     width:100%;
     max-width:100%;
     overflow-x:auto;
-    padding-bottom:4px;
     flex-wrap:nowrap;
-  }
-
-  .toolbar .btn{
-    flex-shrink:0;
-    white-space:nowrap;
-  }
-
-  /* =========================
-     الجدول في الموبايل
-     ========================= */
-
-  .table-wrap{
-    display:block;
-    width:100%;
-    max-width:100%;
-    overflow-x:auto;
-    overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
-    touch-action:pan-x;
   }
 
-  .table{
-    width:720px;
-    min-width:720px;
-    max-width:none;
-  }
+  /* ==================================================
+     Report buttons
+     ================================================== */
 
-  .table th,
-  .table td{
-    padding:11px 10px;
-    font-size:12px;
-    white-space:nowrap;
-  }
-
-  /* منع أي عنصر داخل الجدول من كسر العرض */
-  .table button,
-  .table .btn,
-  .table .badge{
-    white-space:nowrap;
-  }
-
-  /* مؤشر بسيط بأن الجدول قابل للسحب */
-  .table-wrap::after{
-    content:"← اسحب الجدول لرؤية باقي التفاصيل →";
-    display:block;
-    text-align:center;
-    color:var(--muted);
-    font-size:10px;
-    padding:8px 0 2px;
-  }
-
-  /* المراحل */
-  .stage{
-    gap:9px;
-  }
-
-  /* التقارير */
   .report-actions{
     grid-template-columns:1fr;
   }
 
-  /* المودال */
+  /* ==================================================
+     Modal
+     ================================================== */
+
   .modal{
-    padding:10px;
+    padding:12px;
   }
 
   .modalbox{
     width:100%;
     max-width:100%;
-    max-height:92vh;
-    padding:18px;
-    border-radius:18px;
+    padding:20px;
   }
-
+}
   /* أزرار العمليات */
   .actions{
     width:100%;
